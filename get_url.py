@@ -39,7 +39,7 @@ def get_url(stylesheet_str):
     imported_tokens = list(chain.from_iterable(ifilter(None, map(parse_url_to_tokens, imported_url))))
     return imported_url+parse_tokens(tokens+imported_tokens)
 
-def parse_tokens(stylesheet_str):
+def parse_tokens(tokens):
     return list(chain.from_iterable(ifilter(None, map(_get_url, tokens))))
 
 file_name = 'data/css_6.css'
@@ -47,3 +47,4 @@ file_name = 'data/styles.css'
 #file_name = sys.argv[1]
 tokens = open(file_name).read()
 print get_url(tokens)
+print get_url("selector { width: 123px; backgound-image: url('xxx');}")
